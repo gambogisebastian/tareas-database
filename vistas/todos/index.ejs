@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <title>Express - Tareas</title>
+</head>
+<body>
+    <h1>Tareas al momento: <%= tiempo %></h1>
+    <ul>
+        
+        <% todos.forEach(function(t, idx) { %>
+            <li>
+                <form action="/todos/<%= idx %>?_method=DELETE" method="POST" class="form-borrar">
+                    <button type="submit">X</button>
+                </form>
+                <a href="/todos/<%= idx %>"><%= t.todo %></a>
+                -
+                <%= t.done ? 'hecho' : 'pendiente' %>
+            </li>
+        <% } ); %>
+
+        <li><a href="/todos/new">Agregar una tarea</a></li>
+    </ul>
+    
+</body>
+</html>
